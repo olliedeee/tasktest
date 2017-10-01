@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_goal, only: [:show, :edit, :update, :destroy, :create]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :complete]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :create, :complete]
 
  
   def index
@@ -37,6 +37,11 @@ class TasksController < ApplicationController
       flash[:error] = "Error"
     end
     redirect_to @goal
+  end
+  
+  def complete
+    @task.update_attribute(:date_complete, Time.now)
+    redirect_to @goal, notice: "Task completed"
   end
 
   private

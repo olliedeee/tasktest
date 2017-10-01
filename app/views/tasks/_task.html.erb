@@ -1,3 +1,14 @@
-<b><p><%= task.name %></b> is due on <%= task.task_due %> | 
-<%= link_to "Delete Task", goal_task_path(@goal, task.id),
-method: :delete, data: {confirm: "Are you sure you want to delete this?"} %></p>
+<% if task.completed? %>
+
+  <b><p><%= task.name %></b> was completed on: <b><%= task.date_complete %></b> | 
+  <%= link_to "", goal_task_path(@goal, task.id),
+  method: :delete, data: {confirm: "Are you sure you want to delete this?"}, class: "glyphicon glyphicon-trash" %>  | 
+  <%= link_to "",  complete_goal_task_path(@goal, task.id), method: :patch, class: "glyphicon glyphicon-ok" %></p>
+<% else %>
+  <b><p><%= task.name %></b> is due on <b><%= task.task_due %></b> | 
+  <%= link_to "", goal_task_path(@goal, task.id),
+  method: :delete, data: {confirm: "Are you sure you want to delete this?"}, class: "glyphicon glyphicon-trash" %>  | 
+  <%= link_to "",  complete_goal_task_path(@goal, task.id), method: :patch, class: "glyphicon glyphicon-ok" %></p>
+<% end %>
+<hr>
+
