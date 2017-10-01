@@ -18,9 +18,19 @@
   <%= @goal.date_due %>
 </p>
 
-
-
-
-
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>
+
+<hr>
+
+<center><h1>Tasks</h1></center>
+
+<div>
+  <%= render @goal.tasks %>
+</div>
+
+<hr>
+
+<div>
+  <%= render 'tasks/form' %>
+</div>

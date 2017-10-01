@@ -1,0 +1,3 @@
+<b><p><%= task.name %></b> is due on <%= task.task_due %> | 
+<%= link_to "Delete Task", goal_task_path(@goal, task.id),
+method: :delete, data: {confirm: "Are you sure you want to delete this?"} %></p>
