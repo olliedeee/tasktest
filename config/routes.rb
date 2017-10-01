@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tasks
+  resources :goals
   resources :statics
   root 'statics#index'
   devise_for :users
